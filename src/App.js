@@ -213,6 +213,15 @@ function App() {
         </div>
 
 
+        <div className='mt-28'>
+            <div className='flex flex-col gap-3 max-w-[1300px] mx-4 lg:mx-auto p-5 lg:p-5 bg-gray-100 rounded-lg'>
+              <div className='w-full mt-16 mb-8'>
+                <p className='text-xl lg:text-2xl font-medium font-serif text-center w-full lg:w-[50%]'>Besoin de conseils ou d'informations sur Bigoodee ? Veuillez nous adresser vos messages à <span className='text-PinkR'><a href='/'>hello@bigoodee.fr</a></span>.</p>
+              </div>
+            </div>
+        </div>
+
+
        
 
 
