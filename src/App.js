@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import logo from "./images/logo.png";
@@ -10,6 +10,7 @@ import etoile from "./images/etoiles.png";
 import femme from "./images/plein-coup-femme-tenant-smartphone 1.png";
 import Capillaire from './components/Capilliares';
 import Propositions from './components/Propositions';
+import Footer from './components/Footer';
 
 //import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -19,25 +20,51 @@ import './App.css';
 
 function App() {
 
-  
+    const [isOpen, setIsOPen] = useState(false);
+
+    const toggleMenu = () => {
+      setIsOPen(!isOpen)
+    }
     return (
       <div>
       <BrowserRouter> 
         <nav className=' shadow-xl text-gray-500 text-lg font-semibold sticky top-0 bg-white'>
-          <ul  className="flex flex-col md:flex-row justify-start items-center gap-10 py-8 max-w-[1400px] mx-auto text-primary px-10">
-            <li>
+          <div className='flex flex-row justify-between md:justify-start px-10 items-center max-w-[1400px] mx-auto py-8  text-primary'>
+            <div>
               <img src={logo} alt="logo" className="w-24"/>
-            </li>
-            <li>
-                <HashLink to='#acceuil' className='hover:text-PinkR'>Acceuil</HashLink>
-            </li>
-            <li>
-                <HashLink to='#contact' className='hover:text-PinkR'>Contact</HashLink>
-            </li>
-            <li>
-                <HashLink to='#faq' className='hover:text-PinkR'>FAQ</HashLink>
-            </li>
+            </div>
+            <div className='md:hidden'>
+              <button className='rounded-full p-1 border-2' onClick={toggleMenu}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-black font-bold">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+            <ul  className="hidden md:flex space-x-8 px-10">
+              <li>
+                  <HashLink to='#acceuil' className='hover:text-PinkR'>Acceuil</HashLink>
+              </li>
+              <li>
+                  <HashLink to='#contact' className='hover:text-PinkR'>Contact</HashLink>
+              </li>
+              <li>
+                  <HashLink to='#faq' className='hover:text-PinkR'>FAQ</HashLink>
+              </li>
+            </ul>
+          </div>
+          {isOpen ? (
+            <ul  className="flex flex-col justify-center items-center gap-3 pb-5 md:hidden">
+              <li>
+                  <HashLink to='#acceuil' className='hover:text-PinkR'>Acceuil</HashLink>
+              </li>
+              <li>
+                  <HashLink to='#contact' className='hover:text-PinkR'>Contact</HashLink>
+              </li>
+              <li>
+                  <HashLink to='#faq' className='hover:text-PinkR'>FAQ</HashLink>
+              </li>
           </ul>
+          ):null}
         </nav>
       </BrowserRouter>
         
@@ -64,7 +91,7 @@ function App() {
         </div>
 
 
-        <div className="bg-PinkR" id="contact">
+        <div className="bg-PinkR">
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-[1400px] mx-auto px-10 py-20'>
             <div className='flex flex-col gap-5'>
               <div className='flex flex-row'>
@@ -192,11 +219,11 @@ function App() {
         </div>
 
         <div className='mt-10'>
-            <div className='flex flex-col items-center gap-10 max-w-[1300px] mx-4 lg:mx-auto p-5 lg:p-10 bg-PinkB rounded-lg'>
-              <select>
-                <option type='radio'>GUIDE CHEVEUX BOUCLÉS AU NATUREL</option>
-                <option type="radio">GUIDE CHEVEUX CRÉPUS AU NATUREL</option>
-              </select>
+            <div className='flex flex-col gap-10 max-w-[1300px] mx-4 lg:mx-auto p-5 lg:p-10 bg-PinkB rounded-lg'>
+              <form className=' flex flex-col gap-5 text-xl font-sans justify-center items-start w-full lg:px-44'>
+                <p><input type='radio' name='choix' className='w-10'/><span className='focus:border-PinkR'>GUIDE CHEVEUX BOUCLÉS AU NATUREL</span></p>
+                <p><input type='radio' name='choix' className='w-10'/><span>GUIDE CHEVEUX CRÉPUS AU NATUREL</span></p>
+              </form>
               <form className='flex flex-col gap-5 lg:gap-0 lg:flex-row justify-center items-center w-full lg:px-40'>
                 <input type='email' placeholder='Votre adresse e-mail' className='w-full lg:w-[70%] border-2 rounded-md lg:rounded-e-none p-2 text-lg font-serif focus:outline-none focus:border-PinkR'/>
                 <button type='submit' className='bg-PinkR border-2 border-PinkR hover:bg-pink-700 text-white rounded-md lg:rounded-s-none  text-md p-2 w-full lg:w-[25%]'>RECEVOIR MON E-BOOK</button>
@@ -205,35 +232,36 @@ function App() {
         </div>
 
         <div className='mt-28'>
-            <div className='flex flex-col gap-3 max-w-[1300px] mx-4 lg:mx-auto p-5 lg:p-5 bg-gray-100 rounded-lg'>
-              <div className='w-full mt-16 mb-8'>
-                <p className='text-xl lg:text-2xl font-medium font-serif text-center w-full lg:w-[50%]'>Besoin de conseils ou d'informations sur Bigoodee ? Veuillez nous adresser vos messages à <span className='text-PinkR'><a href='/'>hello@bigoodee.fr</a></span>.</p>
+            <div className='flex flex-col items-center justify-center gap-10 max-w-[1300px] mx-4 lg:mx-auto py-16 bg-gray-100 rounded-lg'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-PinkR w-24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+
+              <div className='w-full'>
+                <p className='text-xl lg:text-2xl font-medium font-serif text-center w-full lg:w-[50%] mx-auto'>Besoin de conseils ou d'informations sur Bigoodee ?<br/> Veuillez nous adresser vos messages à <span className='text-PinkR'><a href='/'>hello@bigoodee.fr</a></span>.</p>
               </div>
             </div>
         </div>
 
+      <Footer></Footer>
+
 
        
 
 
+
+
+
+
+
+
+
+
+
+
+
+
        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div className="h-[800px] bg-red-400" id="faq">
-          <h1 className="">Where To Get Support</h1>
-        </div>
         
 
 

@@ -17,7 +17,7 @@ function Capillaire() {
     ];
 
     const myChoix = choix.map((map) => {
-        return(<option key={map.id}>{map.contenu}</option>
+        return(<option key={map.id} className=" ">{map.contenu}</option>
         )
     })
     return (
@@ -39,7 +39,7 @@ function Capillaire() {
                     <input type='email' placeholder='Votre adresse e-mail' className='w-full border-2 rounded-md p-2 text-lg font-serif focus:outline-none focus:border-pink-500'/>
                 </div>
         
-                <div>
+                <div id="faq">
                     <button type='submit' className='bg-PinkB hover:bg-PinkC rounded-md font-medium text-md p-2 text-gray-800'>RECEVOIR MA ROUTINE</button>
                 </div>
             </div>
