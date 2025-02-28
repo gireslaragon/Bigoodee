@@ -231,9 +231,9 @@ function App() {
 
 
 
-          <div className="h-[800px] bg-red-400" id="faq">
-            <h1 className="">Where To Get Support</h1>
-          </div>
+        <div className="h-[800px] bg-red-400" id="faq">
+          <h1 className="">Where To Get Support</h1>
+        </div>
         
 
 

@@ -27,25 +27,45 @@ function Propositions() {
             <p className="text-3xl text-center mb-10">FAQ</p>
             <div className='flex flex-col gap-3 max-w-[1300px] mx-4 lg:mx-auto p-5 lg:p-5 bg-gray-100 rounded-lg'>
                 <button className=" font-serif p-2 text-start" onClick={() => setValeur(!valeur)}>
-                    <p className="pb-5 text-xl lg:text-2xl">Qu'est-ce que Bigoodee propose exactement ?</p>
+                    <div className="flex flex-row justify-between items-center">
+                        <p className="pb-5 text-xl lg:text-2xl">Qu'est-ce que Bigoodee propose exactement ?</p>
+                        <svg className="sm:w-[15%] lg:w-[6%]"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
                     {myValeurO}
                     <hr/>
                 </button>
 
                 <button className=" font-serif p-2 text-start" onClick={() => setTwo(!two)}>
-                    <p className="pb-5 text-xl lg:text-2xl">Est-ce que les conseils de Bigoodee conviennent à tous les types de cheveux ?</p>
+                    <div className="flex flex-row justify-between items-center">
+                        <p className="pb-5 text-xl lg:text-2xl">Est-ce que les conseils de Bigoodee conviennent à tous les types de cheveux ?</p>
+                        <svg className="sm:w-[15%] lg:w-[6%]"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
                     {myValeurT}
                     <hr/>
                 </button>
 
                 <button className=" font-serif p-2 text-start" onClick={() => setThree(!three)}>
-                    <p className="pb-5 text-xl lg:text-2xl">Qu'est-ce qui différencie Bigoodee des autres sources d'information capillaire ?</p>
+                    <div className="flex flex-row justify-between items-center">
+                        <p className="pb-5 text-xl lg:text-2xl">Qu'est-ce qui différencie Bigoodee des autres sources d'information capillaire ?</p>
+                        <svg className="md:w-[6%]"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
                    {myValeurY}
                    <hr/>
                 </button>
 
                 <button className=" font-serif p-2 text-start" onClick={() => setFour(!four)}>
-                    <p className="pb-5 text-xl lg:text-2xl">Comment puis-je poser des questions ou demander des conseils personnalisés ?</p>
+                    <div className="flex flex-row justify-between items-center">
+                        <p className="pb-5 text-xl lg:text-2xl">Comment puis-je poser des questions ou demander des conseils personnalisés ?</p>
+                        <svg className="md:w-[6%]"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
                    {myValeurF}
                    <hr/>
                 </button>
