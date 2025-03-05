@@ -6,11 +6,12 @@ module.exports = {
     theme: {
       extend: {
         colors:{
-          PinkR: '#CB5A90',
-          PinkC: '#F1CFDF',
-          PinkB: '#FDEBF1',
-          WhiteB: '#CB5A90',
-          WhiteR: '#FEF6F9'
+          Primary: '#1E1E1E',
+          Secondary: '#161637',
+          One:'#84BFC5',
+          Two: '#8ECAA8',
+          Three: '#95D38A',
+          Four: '#78B7E2'
         }
       },
     },
