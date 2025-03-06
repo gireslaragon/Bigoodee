@@ -9,7 +9,7 @@ function NavBar() {
       setIsOPen(!isOpen)
     }
     return(
-        <nav className='sticky top-0 bg-white'>
+        <nav className='sticky top-0 bg-white shadow-xl z-10'>
         <div className='flex flex-row justify-between items-center max-w-[1400px] mx-auto px-5 py-5 text-lg'>
           <div>
             <img src={Logo} alt="Logo M&E" className="w-16 lg:w-28"/>

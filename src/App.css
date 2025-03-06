@@ -2,13 +2,6 @@
  
 }
 
-h2 {
-  font-size: 72px;
-  background: -webkit-linear-gradient(#95D38A, #78B7E2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
