@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 function Bas() {
     return(
-        <div className=" bg-Primary">
+        <div className=" bg-Primary"> 
             <div className='max-w-[1400px] mx-auto px-10 py-5 lg:py-10 text-white'>
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-5 lg:gap-0">
                     <img src={logoBas} alt="logo" className="w-[20%] lg:w-[10%]"/>
