@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Logo from "../images/LogoCouleur.png";
+//import { Link } from "react-scroll";
+import { BrowserRouter} from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 function NavBar() {
 
@@ -9,10 +12,11 @@ function NavBar() {
       setIsOPen(!isOpen)
     }
     return(
-        <nav className='sticky top-0 bg-white shadow-xl z-10'>
+      <BrowserRouter>
+        <nav className='sticky top-0 bg-white shadow-xl z-30'>
         <div className='flex flex-row justify-between items-center max-w-[1400px] mx-auto px-5 py-5 text-lg'>
           <div>
-            <img src={Logo} alt="Logo M&E" className="w-16 lg:w-28"/>
+            <HashLink to="/"><img src={Logo} alt="Logo M&E" className="w-16 lg:w-28"/></HashLink>
           </div>
           <div className='md:hidden'>
             <button className='rounded-full p-1 border-2' onClick={toggleMenu}>
@@ -23,30 +27,31 @@ function NavBar() {
           </div>
           <ul  className="hidden md:flex space-x-8 text-Secondary font-semibold">
             <li>
-                <a href='#acceuil' className='hover:text-Two hover:font-semibold'>Nos conseils</a>
+                <HashLink to="#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
             </li>
             <li>
-                <a href='#contact' className='hover:text-Two hover:font-semibold'>Nos solutions</a>
+                <HashLink to="#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos solutions</HashLink>
             </li>
             <li>
-                <a href='#contact' className='hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg'>Simuler ma consomation d'énergie</a>
+                <HashLink to="#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Simuler ma consomation d énergie</HashLink>
             </li>
           </ul>
         </div>
         {isOpen ? (
           <ul  className="flex flex-col justify-center items-center gap-5 pb-5 md:hidden">
-            <li>
-                <a href='#nos conseils' className='hover:text-PinkR'>Nos conseils</a>
+             <li>
+                <HashLink to="#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
             </li>
             <li>
-                <a href='#nos solutions' className='hover:text-PinkR'>Nos solutions</a>
+                <HashLink to="#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos solutions</HashLink>
             </li>
             <li>
-                <a href='#ma consomation' className='hover:text-Two hover:font-semibold bg-Primary p-2 text-white rounded-lg'>Simuler ma consomation d'énergie</a>
+                <HashLink to="#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Simuler ma consomation d énergie</HashLink>
             </li>
         </ul>
         ):null}
       </nav>
+      </BrowserRouter>
     );
 }
 export default NavBar; 

@@ -7,6 +7,7 @@ import CalculAide from './components/CalculAide';
 import Conseils from './components/Conseils';
 import Question from './components/Question';
 import Projet from './components/Projet';
+import Bas from './components/Bas';
 //import { BrowserRouter} from 'react-router-dom';
 //import { HashLink } from 'react-router-hash-link';
 
@@ -27,6 +28,7 @@ function App() {
       <Conseils></Conseils>
       <Projet></Projet>
       <Question></Question>
+      <Bas></Bas>
     </div>
   );
 }
