@@ -26,8 +26,8 @@ function Bas() {
                         <div className="mt-5 lg:mt-10">
                             <p className="text-lg lg:text-xl font-semibold">Suivez-nous</p>
                             <div className="flex flex-row gap-3 mt-3">
-                                <a href="/"><FaFacebook className="text-2xl lg:text-4xl"></FaFacebook></a>
-                                <a href="/"><FaInstagram className=" text-2xl lg:text-4xl"></FaInstagram></a>
+                                <a href="https://www.facebook.com/share/1AhsZYXtAj/"><FaFacebook className="text-2xl lg:text-4xl"></FaFacebook></a>
+                                <a href="https://www.instagram.com/maisoneteconomies?igsh=eHo4eWFkM2ltNW16"><FaInstagram className=" text-2xl lg:text-4xl"></FaInstagram></a>
                             </div>
                         </div>
                     </div>
