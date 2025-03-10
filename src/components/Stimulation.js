@@ -7,7 +7,7 @@ function Stimulation() {
             <div className='flex flex-col lg:flex-row justify-evenly gap-20 max-w-[1400px] mx-auto px-10'>
 
                 <div className="flex flex-col items-center lg:items-end gap-3 lg:gap-0 w-full lg:w-[50%] px-3">
-                    <h1 className="text-xl lg:text-3xl text-center font-semibold"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Simulez votre consommation d'énergie et optimisez vos économies</span></h1>
+                    <h2 className="text-xl lg:text-3xl text-center font-semibold"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Simulez votre consommation d'énergie et optimisez vos économies</span></h2>
                     <img src={telephone} alt="telephone"  className="w-10 pb-10"/>
                     <ul className="list-disc flex flex-col gap-5 font-semibold text-md lg:text-lg">
                         <li>Estimez votre consommation : Sélectionnez vos appareils et obtenez une estimation de votre consommation énergétique.</li>

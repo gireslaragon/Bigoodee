@@ -12,7 +12,7 @@ function CalculAide() {
                 
                 <div className="flex flex-col justify-center lg:justify-start gap-10 lg:gap-16 w-full lg:w-[60%]">
                     <div>
-                        <h1 className="text-xl lg:text-3xl font-semibold text-center"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Découvrez et calculez vos aides  énergetiques</span></h1>
+                        <h2 className="text-xl lg:text-3xl font-semibold text-center"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Découvrez et calculez vos aides  énergetiques</span></h2>
                         
                         <div className="flex felx-row items-center justify-center gap-5 lg:gap-10 pt-3 lg:hidden">
                             <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[30%] lg:w-[20%]"></div>

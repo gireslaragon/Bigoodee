@@ -13,7 +13,7 @@ function Question() {
     return (
         <div className="mt-28 lg:mt-28 bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90%">
             <div className='flex flex-col gap-10 max-w-[1400px] mx-auto px-10 py-14 text-white'>
-                <p className="text-white text-2xl lg:text-4xl font-medium">Vous avez des questions ?</p>
+                <h2 className="text-white text-2xl lg:text-4xl font-medium">Vous avez des questions ?</h2>
 
                 <div>
                     <button className=" font-sans p-2 text-start w-full" onClick={() => setTwo(!two)}>

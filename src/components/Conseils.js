@@ -9,7 +9,7 @@ function Conseils() {
         <div className="my-16 lg:my-28" >
             <div className='max-w-[1400px] mx-auto px-10' >
 
-                <h1 className="text-xl lg:text-3xl text-center font-semibold" > <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Conseils pratiques pour économiser l'énergie</span></h1>
+                <h2 className="text-xl lg:text-3xl text-center font-semibold" > <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Conseils pratiques pour économiser l'énergie</span></h2>
                 
                 <div className="flex felx-row items-center justify-center gap-5 lggap-10 pt-3">
                     <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[20%]"></div>
