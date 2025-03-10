@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../images/LogoCouleur.png";
 //import { Link } from "react-scroll";
-import { BrowserRouter} from 'react-router-dom';
+//import { BrowserRouter} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 function NavBar() {
@@ -12,7 +12,7 @@ function NavBar() {
       setIsOPen(!isOpen)
     }
     return(
-      <BrowserRouter>
+      
         <nav className='sticky top-0 bg-white shadow-xl z-30'>
         <div className='flex flex-row justify-between items-center max-w-[1400px] mx-auto px-5 py-5 text-lg'>
           <div>
@@ -51,7 +51,7 @@ function NavBar() {
         </ul>
         ):null}
       </nav>
-      </BrowserRouter>
+      
     );
 }
 export default NavBar; 

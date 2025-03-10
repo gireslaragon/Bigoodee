@@ -55,7 +55,7 @@ function Recommandation() {
                     <div className="flex flex-col items-center gap-3 lg:gap-5 w-full lg:w-[80%]">
                         <img src={isolation} alt="isolation" className="w-[90px]" />
                         <h3 className="text-xl font-medium">Isolation des combles</h3>
-                        <p className="text-center">Jusqu'à 30% des pertes de chaleur proviennent du toit. Une bonne isolation des combles permet de réduire considérablement votre consommation énergétique.</p>
+                        <p className="text-center" id="aide">Jusqu'à 30% des pertes de chaleur proviennent du toit. Une bonne isolation des combles permet de réduire considérablement votre consommation énergétique.</p>
                     </div>
                 </div>
 

@@ -1,6 +1,10 @@
 import React from "react";
 import logoBas from "../images/logoBas.png";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+//import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { HashLink } from "react-router-hash-link";
+import { NavLink } from "react-router-dom";
+
 
 function Bas() {
     return(
@@ -9,9 +13,13 @@ function Bas() {
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-5 lg:gap-0">
                     <img src={logoBas} alt="logo" className="w-[20%] lg:w-[10%]"/>
                     <ul className="flex flex-col gap-2 lg:gap-5">
-                        <li className="hover:text-Three"><a href="/">Nos conseils</a></li>
-                        <li className="hover:text-Three"><a href="/">Aide financière</a></li>
-                        <li className="hover:text-Three"><a href="/">A propos</a></li>
+                        <li>
+                            <HashLink to="#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
+                        </li>
+                        <li className="hover:text-Two">
+                            <HashLink to="#aide" smooth={true} duration={1000}>Aide financière</HashLink>
+                        </li>
+                        <li className="hover:text-Two hover:font-semibold"><NavLink to="/apropos">A propos</NavLink></li>
                     </ul>
                     <div>
                         <p className="text-lg lg:text-xl">Inscrivez vous à notre newsletter pour recevoir nos actualités</p>
