@@ -313,7 +313,7 @@ function Question() {
 
                 <div>
                 <button className=" font-sans p-2 text-start w-full " onClick={() => {setONe(!one); setTwo(false); setThree(false); setFour(false); setFive(false)}}> 
-                        <div className="flex flex-row justify-between items-center ease-in-out duration-500" >
+                        <div className="flex flex-row gap-5 justify-between items-center ease-in-out duration-500" >
                             <p className="pb-5 text-lg lg:text-xl font-semibold"> Comment puis-je réduire ma consommation d'électricité à la maison ?</p>
                             <span className={`${one ?"rotate-180":""} ease-in-out duration-500`}>{
                               
@@ -331,7 +331,7 @@ function Question() {
 
 
                     <button className=" font-sans p-2 text-start w-full " onClick={() => {setTwo(!two); setONe(false); setThree(false); setFour(false); setFive(false)}}> 
-                        <div className="flex flex-row justify-between items-center ease-in-out duration-500" >
+                        <div className="flex flex-row gap-5 justify-between items-center ease-in-out duration-500" >
                             <p className="pb-5 text-lg lg:text-xl font-semibold"> Quels équipements consomment le plus d'énergie chez moi ?</p>
                             <span className={`${two ?"rotate-180":""} ease-in-out duration-500`}>{
                               
@@ -348,7 +348,7 @@ function Question() {
                     </button>
 
                     <button className=" font-sans p-2 text-start w-full" onClick={() => {setThree(!three); setONe(false); setTwo(false); setFour(false); setFive(false)}}>
-                        <div className="flex flex-row justify-between items-center">
+                        <div className="flex flex-row gap-5 justify-between items-center">
                             <p className="pb-5 text-lg lg:text-xl font-semibold">Les ampoules LED sont-elles vraiment plus économiques ?</p>
                             <span className={`${three ?"rotate-180":""} ease-in-out duration-500`}>{
                               
@@ -365,7 +365,7 @@ function Question() {
                     </button>
 
                     <button className=" font-sans p-2 text-start w-full" onClick={() => {setFour(!four); setONe(false); setTwo(false); setThree(false); setFive(false)}}>
-                        <div className="flex flex-row justify-between items-center">
+                        <div className="flex flex-row gap-5 justify-between items-center">
                             <p className="pb-5 text-lg lg:text-xl font-semibold">Quels sont les avantages des panneaux solaires pour un particulier ?</p>
                             <span className={`${four ?"rotate-180":""} ease-in-out duration-500`}>{
                               
@@ -381,7 +381,7 @@ function Question() {
                     </button>
 
                     <button className=" font-sans p-2 text-start w-full" onClick={() => {setFive(!five); setONe(false); setTwo(false); setThree(false); setFour(false)}}>
-                        <div className="flex flex-row justify-between items-center">
+                        <div className="flex flex-row gap-5 justify-between items-center">
                             <p className="pb-5 text-lg lg:text-xl font-semibold">Comment puis-je bénéficier des aides financières pour la rénovation énergétique ?</p>
                             <span className={`${five ?"rotate-180":""} ease-in-out duration-500`}>{
                               
