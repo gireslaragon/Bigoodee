@@ -1,5 +1,5 @@
 import React from "react";
-//import NavBar from './components/NavBar';
+import NavBar from './components/NavBar';
 //import Home from './components/Home';
 //import Stimulation from './components/Stimulation';
 //import Recommandation from './components/Recommandation';
@@ -7,7 +7,7 @@ import React from "react";
 //import Conseils from './components/Conseils';
 //import Question from './components/Question';
 //import Projet from './components/Projet';
-//import Bas from './components/Bas';
+import Bas from './components/Bas';
 //import { BrowserRouter} from 'react-router-dom';
 //import { HashLink } from 'react-router-hash-link';
 //import logoBas from "./images/logoBas.png"
@@ -30,14 +30,17 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        <NavBar></NavBar>
       
         
         
           <Routes>
               <Route index element={<Menu />} />
-              <Route path='/apropos'  element={<Apropos />}/>
+              <Route strict path='/apropos'  element={<Apropos />}/>
           </Routes>
+          <Bas></Bas>
       </BrowserRouter>
+
                    
     </div>
   );

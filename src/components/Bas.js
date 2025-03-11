@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logoBas from "../images/logoBas.png";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 //import { BrowserRouter, Route, Routes} from 'react-router-dom';
@@ -7,6 +7,9 @@ import { NavLink } from "react-router-dom";
 
 
 function Bas() {
+    const monteHaut = () => {
+        window.scrollTo({top: 0, behavior: 'auto'});
+    };
     return(
         <div className=" bg-Primary"> 
             <div className='max-w-[1400px] mx-auto px-10 py-5 lg:py-10 text-white'>
@@ -14,12 +17,14 @@ function Bas() {
                     <img src={logoBas} alt="logo" className="w-[20%] lg:w-[10%]"/>
                     <ul className="flex flex-col gap-2 lg:gap-5">
                         <li>
-                            <HashLink to="#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
+                            <HashLink to="/#NosConseils" smooth={true} duration={1000} className='hover:text-Two cursor-pointer'>Nos conseils</HashLink>
                         </li>
                         <li className="hover:text-Two">
-                            <HashLink to="#aide" smooth={true} duration={1000}>Aide financière</HashLink>
+                            <HashLink to="/#aide" smooth={true} duration={1000}>Aide financière</HashLink>
                         </li>
-                        <li className="hover:text-Two hover:font-semibold"><NavLink to="/apropos">A propos</NavLink></li>
+                        <li className="hover:text-Two">
+                            <NavLink to="/apropos" onClick={monteHaut}>A propos</NavLink>
+                        </li>
                     </ul>
                     <div>
                         <p className="text-lg lg:text-xl">Inscrivez vous à notre newsletter pour recevoir nos actualités</p>

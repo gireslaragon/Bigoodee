@@ -3,6 +3,7 @@ import Logo from "../images/LogoCouleur.png";
 //import { Link } from "react-scroll";
 //import { BrowserRouter} from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+//import { NavLink } from 'react-router-dom';
 
 function NavBar() {
 
@@ -25,28 +26,28 @@ function NavBar() {
               </svg>
             </button>
           </div>
-          <ul  className="hidden md:flex space-x-8 text-Secondary font-semibold">
+          <ul  className="hidden md:flex space-x-8 text-Secondary font-semibold" id="apropos">
             <li>
-                <HashLink to="#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
+                  <HashLink to="/#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
             </li>
             <li>
-                <HashLink to="#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos solutions</HashLink>
+                <HashLink to="/#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos solutions</HashLink>
             </li>
             <li>
-                <HashLink to="#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Simuler ma consomation d énergie</HashLink>
+                <HashLink to="/#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Simuler ma consomation d'énergie</HashLink>
             </li>
           </ul>
         </div>
         {isOpen ? (
-          <ul  className="flex flex-col justify-center items-center gap-5 pb-5 md:hidden">
+          <ul  className="flex flex-col justify-center items-center gap-5 pb-5 md:hidden" id="apropos">
              <li>
-                <HashLink to="#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
+                <HashLink to="/#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
             </li>
             <li>
-                <HashLink to="#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos solutions</HashLink>
+                <HashLink to="/#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos solutions</HashLink>
             </li>
             <li>
-                <HashLink to="#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Simuler ma consomation d énergie</HashLink>
+                <HashLink to="/#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Simuler ma consomation d énergie</HashLink>
             </li>
         </ul>
         ):null}

@@ -30,7 +30,7 @@ function CalculAide() {
                         <p>Que ce soit pour l'isolation, le chauffage ou l'installation de panneaux solaires, de nombreuses subventions et primes existent pour alléger vos dépenses</p>
                     </div>
             
-                    <a href="/" className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary py-2 px-5 rounded-md text-white text-md w-fit mx-auto" id="NosConseils">Je calcule mes aides</a>
+                    <a href="/" className="hover:text-Two bg-Secondary py-2 px-5 rounded-md text-white text-md w-fit mx-auto" id="NosConseils">Je calcule mes aides</a>
                     
                 </div>
 

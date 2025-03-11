@@ -19,7 +19,7 @@ function Stimulation() {
 
                 <div className="flex flex-col items-center gap-8 w-full lg:w-[50%]">
                     <div className=" bg-white rounded-lg shadow-lg border-2 border-gray-200 w-full h-96"></div>
-                    <a href="/" className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary py-2 px-5 rounded-md text-white text-md" id="solution">Simuler ma consommation</a>
+                    <a href="/" className="hover:text-Two bg-Secondary py-2 px-5 rounded-md text-white text-md" id="solution">Simuler ma consommation</a>
                 </div>
                 
                 
