@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logoBas from "../images/logoBas.png";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 //import { BrowserRouter, Route, Routes} from 'react-router-dom';
