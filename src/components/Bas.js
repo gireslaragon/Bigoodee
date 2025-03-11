@@ -23,7 +23,7 @@ function Bas() {
                             <HashLink to="/#aide" smooth={true} duration={1000}>Aide financière</HashLink>
                         </li>
                         <li className="hover:text-Two">
-                            <NavLink to="/apropos" onClick={monteHaut}>A propos</NavLink>
+                            <NavLink to="/apropos" onClick={monteHaut}>À propos</NavLink>
                         </li>
                     </ul>
                     <div>
