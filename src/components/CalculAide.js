@@ -1,15 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import home from "../images/house.png";
 import corde from "../images/corde.png";
 import argent from "../images/argent.png";
+import Modal from "./Modal";
 
-function CalculAide() {
-   
+class CalculAide extends Component {
+
+    constructor(props) {
+        super (props)
+
+        this.state = {
+            showModal: false
+        }
+    }
+
+    handleShow = () => {
+        this.setState({
+            showModal: true
+        });
+        
+    }
+
+    handleHide = () => {
+        this.setState({
+            showModal: false
+        })
+    }
+
+   render() { 
+
+    const modal = this.state.showModal && (<Modal close={this.handleHide} />);
     return (
         <div className="my-24 lg:my-28 relative">
-
+            
             <div className='flex flex-col-reverse lg:flex-row justify-center gap-32 max-w-[1400px] mx-auto px-10'>
-                
+            
                 <div className="flex flex-col justify-center lg:justify-start gap-10 lg:gap-16 w-full lg:w-[60%]">
                     <div>
                         <h2 className="text-xl lg:text-3xl font-semibold text-center"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Découvrez et calculez vos aides  énergetiques</span></h2>
@@ -30,10 +55,10 @@ function CalculAide() {
                         <p>Que ce soit pour l'isolation, le chauffage ou l'installation de panneaux solaires, de nombreuses subventions et primes existent pour alléger vos dépenses</p>
                     </div>
             
-                    <a href="/" className="hover:text-Two bg-Secondary py-2 px-5 rounded-md text-white text-md w-fit mx-auto" id="NosConseils">Je calcule mes aides</a>
-                    
+                    <button onClick={this.handleShow} className="hover:text-Two bg-Secondary py-2 px-5 rounded-md text-white text-md w-fit mx-auto" id="NosConseils">Je calcule mes aides</button>
+                    {modal}
                 </div>
-
+                
                 <div className="w-[30%] z-10 hidden lg:flex">
                     <img src={home} alt="Maison" className=""/>
                 </div>
@@ -46,5 +71,6 @@ function CalculAide() {
             
         </div>
     );
+   }
 }
 export default CalculAide;

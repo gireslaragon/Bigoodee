@@ -1,6 +1,7 @@
 import React from "react";
 import BigHouse from "../images/BigHouse.png";
 
+//bg-cover bg-repeat bg-bottom w-full h-screen
 function Home() {
     return(
         <div className="bg-cover h-full bg-center lg:bg-bottom" style={{backgroundImage: `url(${BigHouse})`}}>
