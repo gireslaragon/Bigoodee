@@ -10,11 +10,13 @@ import reflechir from '../images/reflechir.png';
 import architecte from '../images/architecte.png';
 import contrat from '../images/contrat.png';
 import signe from '../images/signe.png';
-import calendrier from '../images/calendar.png'
+import calendrier from '../images/calendar.png';
+import appartement from '../images/appartement.png';
 //import maison from '../images/maison.png';
 
 function Modal(props) {
 
+    //les states et variables
     const [choix, setChoix] = useState('');
     const [logement, setlogement] = useState('');
     const [date, setDate] = useState('');
@@ -60,7 +62,9 @@ function Modal(props) {
     }
     console.log(reponse);
 
-   
+
+
+    //les fonctions
     const handleChange = (e) => {
         setSurface(e.target.value)  
     }
@@ -68,9 +72,6 @@ function Modal(props) {
     const handlePut = (e) => {
         settypeTravaux(e.target.value)  
     }
-
-
-   
 
     const handleCheck = () => {
         if(choix !== "" && logement !== "" && date !== "" && surface !== "" && modeChauffage !== "" && toitureIsole !== "" && murIsole !== "" && solIsole !== "" && typeTravaux !== "" && niveauProjet !== ""){
@@ -81,7 +82,9 @@ function Modal(props) {
     }
     const myVerification = value === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
 
-    //one
+
+
+    //Fonction PageOne
     const handleCheckOne = () => {
         if(quandCommencer !== "" && personne !== "" && revenu !== "" ){
             return setValueOne('oui');
@@ -92,7 +95,9 @@ function Modal(props) {
     const myVerificationTwo = valueTwo === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
     const myValidationTwo = valueTwo === 'oui' ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour enregistrer</p>):null;
 
-    //two
+
+
+    //Fonction PageTwo
     const handleCheckTwo = () => {
         if(adresseLogement !== "" && personne !== "" && revenu !== "" ){
             return setValueTwo('oui');
@@ -124,13 +129,7 @@ function Modal(props) {
     })
 
 
-
-
-
-
-
-
-
+    //PageONe
     const handlePageOne = () => {
         if(value === 'oui' && niveauProjet === "Je réfléchis à mes travaux") {
             return (
@@ -194,6 +193,7 @@ function Modal(props) {
     }
 
     
+    //pageTwo
     const handlePageTwo = () => {
         if(value === 'oui' && niveauProjet !== "Je réfléchis à mes travaux") {
             return (
@@ -242,6 +242,9 @@ function Modal(props) {
             )
         }
     }
+
+
+
     return ReactDOM.createPortal (
         <div className="fixed bg-fixed top-0 z-50 h-full w-full bg-black bg-opacity-80 flex items-center justify-center overflow-hidden">
             <div className="w-[90%] h-[90%] xl:w-[50%] bg-white overflow-y-scroll min-h-52 rounded-lg">
@@ -270,7 +273,7 @@ function Modal(props) {
                         <p className="text-black font-semibold text-md">Une maison</p>
                     </button>
                     <button type="button" onClick={() => setlogement('un appartement')} value={logement} className={`flex flex-row justify-start items-center w-full pl-1 md:pl-5 gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${logement === 'un appartement' ? (style):null}`}>
-                        <img src={locataire} alt="tourne-vis" className="w-5 h-5"/>
+                        <img src={appartement} alt="tourne-vis" className="w-5 h-5"/>
                         <p className="text-black font-semibold text-md">Un appartement</p>
                     </button>
                 </div>

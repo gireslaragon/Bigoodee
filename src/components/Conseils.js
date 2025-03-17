@@ -3,10 +3,11 @@ import argent from "../images/argent.png";
 import clim from "../images/clim.png";
 import ampoule from "../images/ampoule.png";
 import voiture from "../images/voiture.png";
+import chargeur from "../images/chargeur.png";
 
 function Conseils() {
     return(
-        <div className="my-16 lg:my-28" >
+        <div className="my-20 lg:my-40 relative" >
             <div className='max-w-[1400px] mx-auto px-10' >
 
                 <h2 className="text-xl lg:text-3xl text-center font-semibold" > <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Conseils pratiques pour économiser l'énergie</span></h2>
@@ -40,6 +41,9 @@ function Conseils() {
                             <p>Ampoules LED : Pourquoi et comment bien les choisir ?</p>
                         </div>
                     </div>
+                </div>
+                <div className="absolute left-0 bottom-0 invisible md:visible">
+                    <img src={chargeur} alt="chargeur" className="w-[70%]"/>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ import Stimulation from './Stimulation';
 import Recommandation from './Recommandation';
 import CalculAide from './CalculAide';
 import Conseils from './Conseils';
-import Projet from './Projet';
+//import Projet from './Projet';
 import Question from './Question';
 //import Bas from './Bas';
 
@@ -19,7 +19,7 @@ function Menu() {
         <Recommandation></Recommandation>
         <CalculAide></CalculAide>
         <Conseils></Conseils>
-        <Projet></Projet>
+        
         <Question></Question>
         
 
