@@ -19,7 +19,7 @@ function Energie(props) {
     const [typeVitrage, setTypeVitrage] = useState('');   
     const [modeChauffage, setmodeChauffage] = useState(''); 
     const [chauffageGaz, setChauffageGaz] = useState(''); 
-    //const [chauffageSecondaire, setChauffageSecondaire] = useState(''); 
+    const [chauffageSecondaire, setChauffageSecondaire] = useState(''); 
 
 
 
@@ -237,6 +237,16 @@ function Energie(props) {
                     </div>
 
                     <div>{gaz}</div>
+
+                    <p className="font-medium text-md pt-8 pb-3">L'estimation concerne-t-elle un appartement ou une maison ?</p>
+                    <div className="grid grid-cols-2 gap-5 w-[70%] md:w-[60%] mx-auto">
+                        <button type="button" onClick={() => setChauffageSecondaire('oui')} value={chauffageSecondaire} className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${chauffageSecondaire === 'oui' ? (style):null}`}>
+                            <p className="text-black font-semibold text-md w-full text-center">Oui</p>
+                        </button>
+                        <button type="button" onClick={() => setChauffageSecondaire('non')} value={chauffageSecondaire} className={`flex flex-row justify-start items-center w-full pl-1 md:pl-5 gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${chauffageSecondaire === 'non' ? (style):null}`}>
+                            <p className="text-black font-semibold text-md w-full text-center">Non</p>
+                        </button>
+                    </div>
 
                   
         
