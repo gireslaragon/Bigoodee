@@ -23,10 +23,19 @@ function Energie(props) {
     const [typeChauffeEau, setTypeChauffeEau] = useState('');
     const [systemeClimatisation, setSystemeClimatisation] = useState('');
     const [systemeVentilation, setSystemeVentilation] = useState('');
+    const [sex, setSex] = useState('');
 
     const [typeGaz, setTypeGaz] = useState(''); 
     const [typePompe, setTypePompe] = useState('');
     const [typeFioul, setTypeFioul] = useState('');
+
+    const [value, setValue] = useState('');
+     const [valueOne, setValueOne] = useState('');
+
+    const [prenom, setPrenom] = useState('');
+    const [nom, setNom] = useState('');
+    const [email, setEmail] = useState('');
+    const [tel, setTel] = useState('');
 
 
 
@@ -50,20 +59,39 @@ function Energie(props) {
         typeFioul: typeFioul,
 
         chauffageSecondaire: chauffageSecondaire,
+
         typeChauffageSecondaire: typeChauffageSecondaire,
+
         typeChauffeEau: typeChauffeEau,
         systemeClimatisation: systemeClimatisation,
         systemeVentilation: systemeVentilation,
+
+        sex: sex,
+        prenom: prenom,
+        nom: nom,
+        email: email,
+        tel: tel,
        
         
     }
     console.log(mesReponses);
 
     const style = 'border-green-300 bg-green-50';
+    const block = 'hidden';
 
     const handleChange = (e) => {
-        setCodePostal(e.target.value)  
+        setCodePostal(e.target.value) 
     }
+
+    
+    const handleCheck = () => {
+        if(choix !== "" && estimationConcerne !== "" && codePostal !== "" && anneeConstruction !== "" && formeMaison !== "" && mitoyenne !== "" && nombreEtage !== "" && surfaceHabitable !== "" && toitureIsole !== "" && murIsole !== "" && solIsole !== "" && typeVitrage !== "" && ((modeChauffage === "chaufage  au fioul" && typeFioul !== '') || (modeChauffage === "chauffage au gaz" && typeGaz !== '') || (modeChauffage === "pompe à chaleur" && typePompe !== '') || (modeChauffage === "chauffage au bois") || (modeChauffage === "chauffage à l'électricité") || (modeChauffage === "chauffage au charbon")) && (chauffageSecondaire === "non" || (chauffageSecondaire === 'oui' && typeChauffageSecondaire !== "")) && typeChauffeEau !== "" && systemeClimatisation !== "" && systemeVentilation !== ""){
+            return setValue('oui');
+        } else{
+            return setValue('non');
+        }
+    }
+    const myVerification = value === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
 
 
     const gaz = modeChauffage === 'chauffage au gaz' ? (
@@ -154,6 +182,70 @@ function Energie(props) {
         </div>
     ):null
 
+
+    const handleCheckOne = () => {
+        if(sex !== "" && prenom !== "" && nom !== "" && email !== "" && tel !== ""){
+            return setValueOne('oui');
+        } else{
+            return setValueOne('non');
+        }
+    }
+    const myVerificationOne = valueOne === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
+    const myValidationOne = valueOne === 'oui' ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour charger mon bilan énergétique</p>):null;
+
+
+    const handlePageInformation = () => {
+        if( value === 'oui') {
+            return (
+                <form className="p-2 md:p-4 xl:p-6">
+                    <p className="font-medium text-lg pt-0 md:pt-5 pb-3">Comment vous appelez-vous ?</p>
+                    <div className="w-[80%] md:w-[60%] mx-auto pb-10">
+                        <p>Nous préparons votre bilan énergétique personnalisé, dites-nous en un peu plus sur vous.</p>
+                        <div className="grid grid-cols-2 gap-5 pt-5">
+                            <button type="button" onClick={() => setSex('homme')} value={sex} className={`flex flex-row justify-start items-center w-full py-2 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${sex === 'homme' ? (style):null}`}>
+                                <p className="text-black font-semibold text-md w-full text-center">Monsieur</p>
+                            </button>
+                            <button type="button" onClick={() => setSex('femme')} value={sex} className={`flex flex-row justify-start items-center w-full gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${sex === 'femme' ? (style):null}`}>
+                                <p className="text-black font-semibold text-md w-full text-center">Madame</p>
+                            </button>
+                        </div>
+                        
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="prenom" className="font-medium">Prénom</label>
+                            <input type="text" id="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} className="border-2 p-2 outline-green-300" required/>
+                        </div>
+
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="nom" className="font-medium">Nom</label>
+                            <input type="text" id="nom" value={nom} onChange={(e) => setNom(e.target.value)} className="border-2 p-2 outline-green-300" required/>
+                        </div>
+
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="email" className="font-medium ">Email</label>
+                            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 p-2 outline-green-300 focus:border-green-300 invalid:border-red-500 focus:invalid:border-red-500 peer" required/>
+                            <p class="text-red-500 text-sm invisible peer-invalid:visible">Invalid email address</p>
+                        </div>
+
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="number" className="font-medium">Téléphone</label>
+                            <input type="tel" id="tel" value={tel} onChange={(e) => setTel(e.target.value)} className="border-2 p-2 outline-green-300" required/>
+                            {tel < 0  ? (<p class="text-red-500 text-sm">Veuillez saisir un numéro de téléphone valide</p>):null}
+                        </div>
+                    </div>
+
+
+                    {myVerificationOne}
+                    {myValidationOne}
+                    <div className="w-[80%] md:w-[50%] lg:w-[30%] mx-auto">
+                        <button type="button" onClick={valueOne === 'oui' ? (props.close):(handleCheckOne)} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Voir mon bilan énergetique</button>
+                    </div>
+
+                
+                </form>
+            )
+        }
+    }
+
     
 
     return ReactDOM.createPortal(
@@ -164,7 +256,7 @@ function Energie(props) {
                     <button onClick={props.close} className="text-sm bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-1 xl:p-2 text-white rounded-md">Fermer</button>
                 </div>
 
-                <form className={`p-2 md:p-4 xl:p-6`}>
+                <form className={`p-2 md:p-4 xl:p-6 ${value === 'oui' ? (block):null}`}>
                     <p className="font-medium text-md pt-5 pb-3">Pourquoi faites-vous un bilan énergétique ?</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5">
                         <button type="button" onClick={() => setChoix("réduire ma facture d'énergie")} value={choix}   className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${choix === "réduire ma facture d'énergie" ? (style):null}`}>
@@ -199,10 +291,11 @@ function Energie(props) {
 
                     <label htmlFor="code"><p className="font-medium text-md pb-2 pt-8">Quel est le code postal de votre logement ?</p></label>
                     <input type="number" placeholder="12345" value={codePostal} onChange={handleChange} className="border-2 rounded-md p-2 outline-green-300 font-semibold w-full md:w-[47%]"/>
+                    {codePostal.length >= 6 ? (<p class="text-red-500 text-sm">Le code postal ne dépace pas 5 chiffres</p>):null}
 
                     <label htmlFor="annee"><p className="font-medium text-md pb-2 pt-8">Quelle est l'année de construction de votre logement ?</p></label>
-                    <input type="number" placeholder="2010" value={anneeConstruction} onChange={(e) => setAnneConstruction(e.target.value)} id="annee" className="border-2 rounded-md p-2 outline-green-300 font-semibold w-full md:w-[47%]"/>
-                
+                    <input type="number"  placeholder="2010" value={anneeConstruction} onChange={(e) => setAnneConstruction(e.target.value)} id="annee" className="border-2 rounded-md p-2 outline-green-300 font-semibold w-full md:w-[47%]"/>
+                    {anneeConstruction < 0 || anneeConstruction > 2025 ? (<p class="text-red-500 text-sm">Veuillez saisir une année de construction valide</p>):null}
                     
                     
                     <p className="font-medium text-md pt-8 pb-3">Quelle est la forme de votre maison ?</p>
@@ -246,6 +339,7 @@ function Energie(props) {
 
                     <label htmlFor="habit"><p className="font-medium text-md pb-2 pt-8">Quelle est sa surface habitable ?</p></label>
                     <input type="number" placeholder="120" value={surfaceHabitable} onChange={(e) => setSurfaceHabitable(e.target.value)} id="annee" className="border-2 rounded-md p-2 outline-green-300 font-semibold w-[90%] md:w-[47%]"/> <span className="font-semibold text-lg">  m²</span>
+                    {surfaceHabitable < 0 ? (<p class="text-red-500 text-sm">Veuillez saisir une année de construction valide</p>):null}
 
                     <div className="w-[70%] md:w-[60%] mx-auto flex flex-col gap-5 pt-8">
                         <div>
@@ -320,10 +414,10 @@ function Energie(props) {
 
                     <p className="font-medium text-md pt-8 pb-3">Un chauffage secondaire est-il utilisé dans la maison ?</p>
                     <div className="grid grid-cols-2 gap-5 w-[70%] md:w-[60%] mx-auto">
-                        <button type="button" onClick={() => setChauffageSecondaire('oui')} value={chauffageSecondaire} className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${chauffageSecondaire === 'oui' ? (style):null}`}>
+                        <button type="button" onClick={() => setChauffageSecondaire('oui')} value={chauffageSecondaire} className={`flex flex-row justify-start items-center w-full py-2 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${chauffageSecondaire === 'oui' ? (style):null}`}>
                             <p className="text-black font-semibold text-md w-full text-center">Oui</p>
                         </button>
-                        <button type="button" onClick={() => {setChauffageSecondaire('non'); setTypeChauffageSecondaire('')}} value={chauffageSecondaire} className={`flex flex-row justify-start items-center w-full pl-1 md:pl-5 gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${chauffageSecondaire === 'non' ? (style):null}`}>
+                        <button type="button" onClick={() => {setChauffageSecondaire('non'); setTypeChauffageSecondaire('')}} value={chauffageSecondaire} className={`flex flex-row justify-start items-center w-full gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${chauffageSecondaire === 'non' ? (style):null}`}>
                             <p className="text-black font-semibold text-md w-full text-center">Non</p>
                         </button>
                     </div>
@@ -352,16 +446,16 @@ function Energie(props) {
 
                     <p className="font-medium text-md pt-8 pb-3">Votre logement est-il équipé d'un système de climatisation (pompe à chaleur air-air ou autre) ?</p>
                     <div className="grid grid-cols-2 gap-5 w-[70%] md:w-[60%] mx-auto">
-                        <button type="button" onClick={() => setSystemeClimatisation('oui')} value={systemeClimatisation} className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${systemeClimatisation === 'oui' ? (style):null}`}>
+                        <button type="button" onClick={() => setSystemeClimatisation('oui')} value={systemeClimatisation} className={`flex flex-row justify-start items-center w-full py-2 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${systemeClimatisation === 'oui' ? (style):null}`}>
                             <p className="text-black font-semibold text-md w-full text-center">Oui</p>
                         </button>
-                        <button type="button" onClick={() => setSystemeClimatisation('non')} value={systemeClimatisation} className={`flex flex-row justify-start items-center w-full pl-1 md:pl-5 gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${systemeClimatisation === 'non' ? (style):null}`}>
+                        <button type="button" onClick={() => setSystemeClimatisation('non')} value={systemeClimatisation} className={`flex flex-row justify-start items-center w-full gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${systemeClimatisation === 'non' ? (style):null}`}>
                             <p className="text-black font-semibold text-md w-full text-center">Non</p>
                         </button>
                     </div>
 
                     <p className="font-medium text-md pt-8 pb-3">Dispose-t-il d'un système de ventilation ?</p>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-3 gap-5 pb-20">
                         <button type="button" onClick={() => setSystemeVentilation('pas de VMC')} value={systemeVentilation} className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${systemeVentilation === 'pas de VMC' ? (style):null}`}>
                             <p className="text-black font-semibold text-md w-full text-center">Pas de VMC</p>
                         </button>
@@ -373,22 +467,13 @@ function Energie(props) {
                         </button>
                     </div>
 
-                  
-        
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                    {myVerification}
+                    <div className="w-[60%] md:w-[30%] mx-auto">
+                        <button type="button" onClick={handleCheck} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Continuer</button>
+                    </div>
                 </form>
+
+                {handlePageInformation()}
 
 
 
