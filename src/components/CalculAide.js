@@ -39,7 +39,7 @@ class CalculAide extends Component {
                     <div>
                         <h2 className="text-xl lg:text-3xl font-semibold text-center"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Découvrez et calculez vos aides  énergetiques</span></h2>
                         
-                        <div className="flex felx-row items-center justify-center gap-5 lg:gap-10 pt-3 lg:hidden">
+                        <div className="flex felx-row items-center justify-center gap-2 lg:gap-10 pt-3 lg:hidden">
                             <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[30%] md:w-[25%] lg:w-[20%]"></div>
                             <img src={argent} alt="argent" className="w-6 lg:w-10"/>
                             <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[30%] md:w-[25%] lg:w-[20%]"></div>
