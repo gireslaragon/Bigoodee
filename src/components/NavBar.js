@@ -52,7 +52,7 @@ function NavBar() {
                 <HashLink to="/#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
             </li>
             <li>
-                <HashLink to="/#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Aides et primes</HashLink>
+                <HashLink to="/#aide" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Aides et primes</HashLink>
             </li>
             <li>
                 <HashLink to="/#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Bilan énergétique gratuit</HashLink>
