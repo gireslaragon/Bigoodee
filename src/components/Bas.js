@@ -20,7 +20,7 @@ function Bas() {
                             <HashLink to="/#NosConseils" smooth={true} duration={1000} className='hover:text-Two cursor-pointer'>Nos conseils</HashLink>
                         </li>
                         <li className="hover:text-Two">
-                            <HashLink to="/#aide" smooth={true} duration={1000}>Aide financière</HashLink>
+                            <HashLink to="/#aide" smooth={true} duration={1000}>Aides financières</HashLink>
                         </li>
                         <li className="hover:text-Two">
                             <NavLink to="/apropos" onClick={monteHaut}>À propos</NavLink>

@@ -30,7 +30,7 @@ function Energie(props) {
     const [typeFioul, setTypeFioul] = useState('');
 
     const [value, setValue] = useState('');
-     const [valueOne, setValueOne] = useState('');
+    const [valueOne, setValueOne] = useState('');
 
     const [prenom, setPrenom] = useState('');
     const [nom, setNom] = useState('');
@@ -223,13 +223,13 @@ function Energie(props) {
                         <div className="flex flex-col pt-5">
                             <label htmlFor="email" className="font-medium ">Email</label>
                             <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 p-2 outline-green-300 focus:border-green-300 invalid:border-red-500 focus:invalid:border-red-500 peer" required/>
-                            <p class="text-red-500 text-sm invisible peer-invalid:visible">Invalid email address</p>
+                            <p className="text-red-500 text-sm invisible peer-invalid:visible">Invalid email address</p>
                         </div>
 
                         <div className="flex flex-col pt-5">
                             <label htmlFor="number" className="font-medium">Téléphone</label>
                             <input type="tel" id="tel" value={tel} onChange={(e) => setTel(e.target.value)} className="border-2 p-2 outline-green-300" required/>
-                            {tel < 0  ? (<p class="text-red-500 text-sm">Veuillez saisir un numéro de téléphone valide</p>):null}
+                            {tel < 0  ? (<p className="text-red-500 text-sm">Veuillez saisir un numéro de téléphone valide</p>):null}
                         </div>
                     </div>
 
@@ -291,11 +291,11 @@ function Energie(props) {
 
                     <label htmlFor="code"><p className="font-medium text-md pb-2 pt-8">Quel est le code postal de votre logement ?</p></label>
                     <input type="number" placeholder="12345" value={codePostal} onChange={handleChange} className="border-2 rounded-md p-2 outline-green-300 font-semibold w-full md:w-[47%]"/>
-                    {codePostal.length >= 6 ? (<p class="text-red-500 text-sm">Le code postal ne dépace pas 5 chiffres</p>):null}
+                    {codePostal.length >= 6 ? (<p className="text-red-500 text-sm">Le code postal ne dépace pas 5 chiffres</p>):null}
 
                     <label htmlFor="annee"><p className="font-medium text-md pb-2 pt-8">Quelle est l'année de construction de votre logement ?</p></label>
                     <input type="number"  placeholder="2010" value={anneeConstruction} onChange={(e) => setAnneConstruction(e.target.value)} id="annee" className="border-2 rounded-md p-2 outline-green-300 font-semibold w-full md:w-[47%]"/>
-                    {anneeConstruction < 0 || anneeConstruction > 2025 ? (<p class="text-red-500 text-sm">Veuillez saisir une année de construction valide</p>):null}
+                    {anneeConstruction < 0 || anneeConstruction > 2025 ? (<p className="text-red-500 text-sm">Veuillez saisir une année de construction valide</p>):null}
                     
                     
                     <p className="font-medium text-md pt-8 pb-3">Quelle est la forme de votre maison ?</p>
@@ -339,7 +339,7 @@ function Energie(props) {
 
                     <label htmlFor="habit"><p className="font-medium text-md pb-2 pt-8">Quelle est sa surface habitable ?</p></label>
                     <input type="number" placeholder="120" value={surfaceHabitable} onChange={(e) => setSurfaceHabitable(e.target.value)} id="annee" className="border-2 rounded-md p-2 outline-green-300 font-semibold w-[90%] md:w-[47%]"/> <span className="font-semibold text-lg">  m²</span>
-                    {surfaceHabitable < 0 ? (<p class="text-red-500 text-sm">Veuillez saisir une année de construction valide</p>):null}
+                    {surfaceHabitable < 0 ? (<p className="text-red-500 text-sm">Veuillez saisir une année de construction valide</p>):null}
 
                     <div className="w-[70%] md:w-[60%] mx-auto flex flex-col gap-5 pt-8">
                         <div>
