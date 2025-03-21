@@ -13,10 +13,10 @@ function Recommandation() {
             <div className='max-w-[1400px] mx-auto px-10'>
 
                 <h2 className="text-xl lg:text-3xl text-center font-semibold"> <span className=" text-transparent bg-clip-text bg-gradient-to-r from-Three via-One to-Four">Nos recommandations pour une maison plus économique</span></h2>
-                <div className="flex felx-row items-center justify-center gap-10 pt-3">
-                    <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[20%]"></div>
+                <div className="flex felx-row items-center justify-center gap-2 lg:gap-10 pt-3">
+                    <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[30%] lg:w-[20%]"></div>
                     <img src={argent} alt="argent" className="w-6 lg:w-10"/>
-                    <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[20%]"></div>
+                    <div className="h-[1px] bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% w-[30%] lg:w-[20%]"></div>
                 </div>
                 <p className="text-lg lg:text-xl  text-center pt-10 pb-16 lg:pb-24"> Adopter des solutions durables, c'est réduire sa consommation d'énergie tout en améliorant son confort au quotidien. Découvrez nos recommandations pour une maison plus intelligente et économe.</p>
                 

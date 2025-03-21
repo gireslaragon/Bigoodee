@@ -42,7 +42,7 @@ function Conseils() {
                         </div>
                     </div>
                 </div>
-                <div className="absolute left-0 bottom-0 invisible md:visible">
+                <div className="absolute left-0 bottom-0 invisible lg:visible">
                     <img src={chargeur} alt="chargeur" className="w-[70%]"/>
                 </div>
             </div>
