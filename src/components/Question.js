@@ -11,7 +11,7 @@ function Question() {
 
     const myValeurOne = one ? (
     <div className="flex flex-col gap-5">
-            <p className="text-start text-md lg:text-lg pb-2 ">Réduire votre consommation d'électricité à la maison est non seulement bénéfique pour l'environnement, mais aussi pour votre portefeuille. Voici quelques conseils pratiques pour y parvenir :</p>
+            <p className="text-start text-lg pb-2 ">Réduire votre consommation d'électricité à la maison est non seulement bénéfique pour l'environnement, mais aussi pour votre portefeuille. Voici quelques conseils pratiques pour y parvenir :</p>
             <ol className="list-decimal flex flex-col gap-6 pl-5">
                 <div className="flex flex-col gap-1">
                     <li>Éteignez les appareils inutilisés</li>
@@ -78,7 +78,7 @@ function Question() {
     
     const myValeurTwo = two ? (
     <div className="flex flex-col gap-5">
-        <p className="text-start text-md lg:text-lg pb-2 "> Identifier les équipements qui consomment le plus d'énergie dans votre maison est essentiel pour optimiser votre consommation et réduire vos factures. Voici les principaux coupables :</p>
+        <p className="text-start text-lg pb-2 "> Identifier les équipements qui consomment le plus d'énergie dans votre maison est essentiel pour optimiser votre consommation et réduire vos factures. Voici les principaux coupables :</p>
         <ol className="list-decimal flex flex-col gap-6 pl-5">
             <div className="flex flex-col gap-1">
                 <li>Chauffage et Climatisation</li>
@@ -145,7 +145,7 @@ function Question() {
     
     const myValeurThree = three ? (
     <div className="flex flex-col gap-5">
-        <p className="text-start text-md lg:text-lg pb-2 "> Les ampoules LED sont souvent présentées comme une solution économique et écologique pour l'éclairage domestique. Mais sont-elles vraiment plus économiques que les autres types d'ampoules ? Voici quelques éléments de réponse :</p>
+        <p className="text-start text-lg pb-2 "> Les ampoules LED sont souvent présentées comme une solution économique et écologique pour l'éclairage domestique. Mais sont-elles vraiment plus économiques que les autres types d'ampoules ? Voici quelques éléments de réponse :</p>
         <div className="flex flex-col gap-6 pl-5">
             <div className="flex flex-col gap-1">
                 <p className="font-bold">Consommation d'énergie</p>
@@ -190,7 +190,7 @@ function Question() {
 
     const myValeurFour = four ? (
     <div className="flex flex-col gap-5">
-        <p className="text-start text-md lg:text-lg pb-2 "> L'installation de panneaux solaires chez soi présente de nombreux avantages, tant sur le plan économique qu'écologique. Voici les principaux bénéfices à considérer:</p>
+        <p className="text-start text-lg pb-2 "> L'installation de panneaux solaires chez soi présente de nombreux avantages, tant sur le plan économique qu'écologique. Voici les principaux bénéfices à considérer:</p>
         <div className="flex flex-col gap-6 pl-5">
             <div className="flex flex-col gap-1">
                 <p className="font-bold">Réduction des dépenses énergétiques</p>
@@ -249,7 +249,7 @@ function Question() {
     
     const myValeurFive = five ? (
     <div className="flex flex-col gap-5">
-                <p className="text-start text-md lg:text-lg pb-2 ">La rénovation énergétique de votre logement peut être un projet coûteux, mais plusieurs aides financières sont disponibles pour vous aider à le réaliser. Voici les principales étapes et les dispositifs auxquels vous pouvez prétendre :</p>
+                <p className="text-start text-lg pb-2 ">La rénovation énergétique de votre logement peut être un projet coûteux, mais plusieurs aides financières sont disponibles pour vous aider à le réaliser. Voici les principales étapes et les dispositifs auxquels vous pouvez prétendre :</p>
                 <ol className="list-decimal flex flex-col gap-6 pl-5">
                     <div className="flex flex-col gap-1">
                         <li className="font-bold">Évaluez votre projet</li>
@@ -309,7 +309,7 @@ function Question() {
     return (
         <div className="mt-28 lg:mt-28 bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90%">
             <div className='flex flex-col gap-10 max-w-[1400px] mx-auto px-4 py-14 text-white'>
-                <h2 className="text-white text-2xl lg:text-4xl font-medium">Vous avez des questions ?</h2>
+                <h2 className="text-white text-2xl lg:text-4xl font-semibold">Vous avez des questions ?</h2>
 
                 <div>
                 <button className=" font-sans p-2 text-start w-full " onClick={() => {setONe(!one); setTwo(false); setThree(false); setFour(false); setFive(false)}}> 

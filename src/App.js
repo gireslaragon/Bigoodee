@@ -35,7 +35,7 @@ function App() {
         
         
           <Routes>
-              <Route index element={<Menu />} />
+              <Route index path="/" element={<Menu />} />
               <Route strict path='/apropos'  element={<Apropos />}/>
           </Routes>
           <Bas></Bas>

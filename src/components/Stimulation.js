@@ -11,7 +11,7 @@ function Stimulation() {
                     <img src={telephone} alt="telephone"  className="w-10 pb-5"/>
                 </div>
                
-               <div className="flex flex-col gap-5 text-md md:text-lg lg:text-xl font-serif">
+               <div className="flex flex-col gap-5 text-lg lg:text-xl">
                     <p>Vous souhaitez réduire votre consommation d'énergie tout en faisant des économies ?</p>
                     <p> <span className="font-bold">Maison et économies</span> est votre allié pour adopter les bons gestes et optimiser votre consommation !</p>
                     <ul className="list-disc flex flex-col gap-2 ml-5 md:ml-10">

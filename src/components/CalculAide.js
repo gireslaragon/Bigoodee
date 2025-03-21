@@ -50,7 +50,7 @@ class CalculAide extends Component {
                         <img src={home} alt="Maison" className="w-full"/>
                     </div>
 
-                    <div className="lg:font-medium text-center lg:text-start text-lg lg:text-xl">
+                    <div className="lg:font-semibold text-center lg:text-start text-lg lg:text-xl">
                         <p>Saviez-vous que vous pouvez bénéficier d'aides financières pour vos travaux d'amélioration énergétique ?</p><br/>
                         <p>Que ce soit pour l'isolation, le chauffage ou l'installation de panneaux solaires, de nombreuses subventions et primes existent pour alléger vos dépenses</p>
                     </div>
