@@ -20,7 +20,7 @@ function NavBar() {
             <HashLink to="/"><img src={Logo} alt="Logo M&E" className="w-16 lg:w-28"/></HashLink>
           </div>
           <div className='md:hidden'>
-            <button className='rounded-full p-1 border-2' onClick={toggleMenu}>
+            <button className='rounded-full p-1 border-2' onClick={toggleMenu} >
               {
                 isOpen ? (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -39,7 +39,7 @@ function NavBar() {
                   <HashLink to="/#NosConseils" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Nos conseils</HashLink>
             </li>
             <li>
-                <HashLink to="/#solution" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Aides et primes</HashLink>
+                <HashLink to="/#aide" smooth={true} duration={1000} className='hover:text-Two hover:font-semibold cursor-pointer'>Aides et primes</HashLink>
             </li>
             <li>
                 <HashLink to="/#simulation" smooth={true} duration={1000} className="hover:text-Two hover:font-semibold bg-Secondary hover:bg-Primary px-2 py-3 text-white rounded-lg cursor-pointer">Bilan énergétique gratuit</HashLink>
