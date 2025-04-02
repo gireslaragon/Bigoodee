@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from 'react-dom';
 import appartement from '../images/appartement.png';
 import maison from '../images/maison.png';
+import axios from "axios";
 
 function Energie(props) {
 
@@ -37,44 +38,7 @@ function Energie(props) {
     const [email, setEmail] = useState('');
     const [tel, setTel] = useState('');
 
-
-
-    const mesReponses = {
-        choix: choix,
-        estimationConcerne: estimationConcerne,
-        codePostal: codePostal,
-        anneeConstruction: anneeConstruction,
-        formeMaison: formeMaison,
-        mitoyenne: mitoyenne,
-        nombreEtage: nombreEtage,
-        surfaceHabitable: surfaceHabitable,
-        toitureIsole: toitureIsole,
-        murIsole: murIsole,
-        solIsole: solIsole,
-        typeVitrage: typeVitrage,
-        modeChauffage: modeChauffage,
-
-        typeGaz: typeGaz,
-        typePompe: typePompe,
-        typeFioul: typeFioul,
-
-        chauffageSecondaire: chauffageSecondaire,
-
-        typeChauffageSecondaire: typeChauffageSecondaire,
-
-        typeChauffeEau: typeChauffeEau,
-        systemeClimatisation: systemeClimatisation,
-        systemeVentilation: systemeVentilation,
-
-        sex: sex,
-        prenom: prenom,
-        nom: nom,
-        email: email,
-        tel: tel,
-       
-        
-    }
-    console.log(mesReponses);
+    const [emailExist, setEmailExist] = useState();
 
     const style = 'border-green-300 bg-green-50';
     const block = 'hidden';
@@ -183,21 +147,15 @@ function Energie(props) {
     ):null
 
 
-    const handleCheckOne = () => {
-        if(sex !== "" && prenom !== "" && nom !== "" && email !== "" && tel !== ""){
-            return setValueOne('oui');
-        } else{
-            return setValueOne('non');
-        }
-    }
+    
     const myVerificationOne = valueOne === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
-    const myValidationOne = valueOne === 'oui' ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour charger mon bilan énergétique</p>):null;
+    const myValidationOne = valueOne === 'oui' && emailExist === false ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour charger mon bilan énergétique</p>):null;
 
 
     const handlePageInformation = () => {
         if( value === 'oui') {
             return (
-                <form className="p-2 md:p-4 xl:p-6">
+                <div className="p-2 md:p-4 xl:p-6">
                     <p className="font-medium text-lg pt-0 md:pt-5 pb-3">Comment vous appelez-vous ?</p>
                     <div className="w-[80%] md:w-[60%] mx-auto pb-10">
                         <p>Nous préparons votre bilan énergétique personnalisé, dites-nous en un peu plus sur vous.</p>
@@ -236,15 +194,53 @@ function Energie(props) {
 
                     {myVerificationOne}
                     {myValidationOne}
-                    <div className="w-[80%] md:w-[50%] lg:w-[30%] mx-auto">
-                        <button type="button" onClick={valueOne === 'oui' ? (props.close):(handleCheckOne)} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Voir mon bilan énergetique</button>
+                    {emailExist && (<p className="text-red-500 text-center">L'email existe déja dans la base de données</p>)}
+                    <div className="w-[80%] md:w-[50%] lg:w-[40%] mx-auto">
+                        <button type="button" onClick={handleCheckEmail} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Voir mon bilan énergetique</button>
                     </div>
 
                 
-                </form>
+                </div>
             )
         }
     }
+
+    /*const submit = (e) => {
+        e.preventDefault()
+        
+    };*/
+
+    const handleCheckEmail = async(e) => {
+        if(sex !== "" && prenom !== "" && nom !== "" && email !== "" && tel !== ""){
+            setValueOne('oui');
+            e.preventDefault()
+            const login = { email };
+            axios.post('http://localhost:3001/email', login)
+            .then(res => {
+                if(res.data.Login) {
+                    //console.log(res.data.Login)
+                    setEmailExist(true);
+                } else {
+                    const mesReponses = { choix, estimationConcerne, codePostal, anneeConstruction, formeMaison, mitoyenne, nombreEtage, surfaceHabitable, toitureIsole, murIsole, solIsole, typeVitrage, modeChauffage, typeGaz, typePompe, typeFioul, chauffageSecondaire, typeChauffageSecondaire, typeChauffeEau, systemeClimatisation, systemeVentilation, sex, prenom, nom, email, tel };
+                    axios.post('http://localhost:3001/envoyer-donnees-bilan&energie', mesReponses)
+                    .then((mesReponses) => {
+                        console.log(mesReponses.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                    props.close();
+                }
+                    //console.log(res); 
+            })
+            .catch(err => console.log(err)); 
+        } else{
+            return setValueOne('non');
+        }
+          
+    }
+    
+    //const Enregistrement = emailExist === false && (submit);
 
     
 
@@ -256,7 +252,8 @@ function Energie(props) {
                     <button onClick={props.close} className="text-sm bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-1 xl:p-2 text-white rounded-md">Fermer</button>
                 </div>
 
-                <form className={`p-2 md:p-4 xl:p-6 ${value === 'oui' ? (block):null}`}>
+                <form>
+                <div className={`p-2 md:p-4 xl:p-6 ${value === 'oui' ? (block):null}`}>
                     <p className="font-medium text-md pt-5 pb-3">Pourquoi faites-vous un bilan énergétique ?</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-5">
                         <button type="button" onClick={() => setChoix("réduire ma facture d'énergie")} value={choix}   className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${choix === "réduire ma facture d'énergie" ? (style):null}`}>
@@ -471,9 +468,10 @@ function Energie(props) {
                     <div className="w-[60%] md:w-[30%] mx-auto">
                         <button type="button" onClick={handleCheck} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Continuer</button>
                     </div>
-                </form>
+                </div>
 
                 {handlePageInformation()}
+                </form>
 
 
 

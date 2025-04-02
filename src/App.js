@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from './components/NavBar';
+//import NavBar from './components/NavBar';
 //import Home from './components/Home';
 //import Stimulation from './components/Stimulation';
 //import Recommandation from './components/Recommandation';
@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 //import Conseils from './components/Conseils';
 //import Question from './components/Question';
 //import Projet from './components/Projet';
-import Bas from './components/Bas';
+//import Bas from './components/Bas';
 //import { BrowserRouter} from 'react-router-dom';
 //import { HashLink } from 'react-router-hash-link';
 //import logoBas from "./images/logoBas.png"
@@ -17,6 +17,10 @@ import Apropos from './components/Apropos';
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 //import { HashLink } from 'react-router-hash-link';
 //import Logo from "./images/LogoCouleur.png";
+import Dashboard from "./components/Dashboard";
+//import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Notfound from "./components/Notfound";
 
 
 
@@ -30,15 +34,19 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <NavBar></NavBar>
+      
+        
       
         
         
           <Routes>
               <Route index path="/" element={<Menu />} />
               <Route strict path='/apropos'  element={<Apropos />}/>
+              {/*<Route strict path='/signup'  element={<Signup />}/>*/}
+              <Route strict path='/login'  element={<Login />}/>
+              <Route strict path='/dashboard'  element={<Dashboard />}/>
+              <Route path='*'  element={<Notfound />}/>
           </Routes>
-          <Bas></Bas>
       </BrowserRouter>
 
                    

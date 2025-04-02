@@ -2,13 +2,15 @@ import React from "react";
 //import { HashLink } from 'react-router-hash-link';
 //import Logo from "../images/LogoCouleur.png";
 //import BigHouse from "../images/BigHouse.png";
-//import Bas from "./Bas";
+//import Bas from "./Bas";  
+import NavBar from "./NavBar";
+import Bas from "./Bas";
 
 function Apropos()  {
     
     return(
         <div>           
-            
+            <NavBar></NavBar>            
 
             <div className="text-black bg-white" >
                 <div className='flex flex-col items-start gap-10 md:gap-14 lg:gap-20 max-w-[1400px] mx-auto py-10 md:py-14 lg:py-20 px-5 md:px-10'>
@@ -24,6 +26,7 @@ function Apropos()  {
                     </div>
                 </div>
             </div>
+            <Bas></Bas>
 
            
 

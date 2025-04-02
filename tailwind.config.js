@@ -11,7 +11,9 @@ module.exports = {
           One:'#84BFC5',
           Two: '#8ECAA8',
           Three: '#95D38A',
-          Four: '#78B7E2'
+          Four: '#78B7E2',
+          Third: '#3C8AA6',
+          Verte: '#95D38A', 
         }
       },
     },

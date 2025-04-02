@@ -12,6 +12,7 @@ import contrat from '../images/contrat.png';
 import signe from '../images/signe.png';
 import calendrier from '../images/calendar.png';
 import appartement from '../images/appartement.png';
+import axios from "axios";
 //import maison from '../images/maison.png';
 
 function Modal(props) {
@@ -32,24 +33,32 @@ function Modal(props) {
     const [revenu, setRevenu] = useState('');
     const [adresseLogement, setAdresseLogement] = useState('');
 
+    const [sex, setSex] = useState('');
+    const [prenom, setPrenom] = useState('');
+    const [nom, setNom] = useState('');
+    const [email, setEmail] = useState('');
+    const [tel, setTel] = useState('');
+
 
     
     const [value, setValue] = useState('');
     const [valueOne, setValueOne] = useState('');
     const [valueTwo, setValueTwo] = useState(false);
+    const [valueV, setValueV] = useState(false);
+    const [emailValid, setEmailValid] = useState();
 
     const style = 'border-green-300 bg-green-50';
     const block = 'hidden';
 
-    const reponse = {
+    /*const reponse = {
         choix: choix,
         logement: logement,
         date: date,
         surface: surface,
         modeChauffage: modeChauffage,
         toitureIsole: toitureIsole,
-        murIsole: murIsole,
         solIsole: solIsole,
+        murIsole: murIsole,
         typeTravaux: typeTravaux,
         niveauProjet: niveauProjet,
 
@@ -59,8 +68,8 @@ function Modal(props) {
         revenu: revenu,
         adresseLogement: adresseLogement,
         
-    }
-    console.log(reponse);
+    }*/
+    //console.log(reponse);
 
 
 
@@ -93,7 +102,7 @@ function Modal(props) {
         }
     }
     const myVerificationTwo = valueTwo === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
-    const myValidationTwo = valueTwo === 'oui' ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour enregistrer</p>):null;
+    const myValidationTwo = valueTwo === 'oui' && emailValid === false ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour enregistrer</p>):null;
 
 
 
@@ -184,7 +193,7 @@ function Modal(props) {
                     {myVerificationOne}
                     {myValidationOne}
                     <div className="w-[60%] md:w-[30%] mx-auto">
-                        <button type="submit" onClick={valueOne === 'oui' ? (props.close):(handleCheckOne)} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Enregistrer</button>
+                        <button type="button" onClick={valueOne === 'oui' ? (handlePageInformationV):(handleCheckOne)} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Continuer</button>
                     </div>
 
                 </div>
@@ -198,10 +207,10 @@ function Modal(props) {
         if(value === 'oui' && niveauProjet !== "Je réfléchis à mes travaux") {
             return (
                 <div className="px-6 pb-6">
-                    <form className="flex flex-col">
+                    <div className="flex flex-col">
                         <label className="font-medium text-md pt-8 pb-3">Où se situe le logement concerné par votre projet ?</label>
                         <input type="text" placeholder="adresse" value={adresseLogement} onChange={(e) => setAdresseLogement(e.target.value)} className="border-2 p-2 rounded-md outline-green-300" required/>
-                    </form>
+                    </div>
                    
 
                     <p className="font-medium text-md pt-10 pb-7 text-center">Combien de personnes votre foyer, y compris vous-même ?<br/>(pour vous donner une estimation plus précise de vos aides)</p>
@@ -235,12 +244,122 @@ function Modal(props) {
 
                     {myVerificationTwo}
                     {myValidationTwo}
+                    {emailValid && (<p className="text-red-500 text-center">L'email existe déja dans la base de données</p>)}
                     <div className="w-[60%] md:w-[30%] mx-auto">
-                        <button type="submit" onClick={valueTwo === 'oui' ? (props.close):(handleCheckTwo)} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Enregistrer</button>
+                        <button type="button" onClick={valueTwo === 'oui' ? (handlePageInformationV):(handleCheckTwo)} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Continuer</button>
                     </div>
                 </div>
             )
         }
+    }
+
+
+    
+    const myVerificationV = valueV === 'non' ? (<p className="text-red-500 text-center">Veuillez remplir tout les champs</p>):null;
+    const myValidationV = valueV === 'oui' && emailValid === false ? (<p className="text-green-500 text-center">Veuillez cliquer une deuxieme fois pour charger mon bilan énergétique</p>):null;
+
+
+    const handlePageInformationV = () => {
+        if( valueTwo === 'oui' || valueOne === 'oui') {
+            return (
+                <div className="p-2 md:p-4 xl:p-6">
+                    <p className="font-medium text-lg pt-0 md:pt-5 pb-3">Comment vous appelez-vous ?</p>
+                    <div className="w-[80%] md:w-[60%] mx-auto pb-10">
+                        <p>Nous préparons votre bilan énergétique personnalisé, dites-nous en un peu plus sur vous.</p>
+                        <div className="grid grid-cols-2 gap-5 pt-5">
+                            <button type="button" onClick={() => setSex('homme')} value={sex} className={`flex flex-row justify-start items-center w-full py-2 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${sex === 'homme' ? (style):null}`}>
+                                <p className="text-black font-semibold text-md w-full text-center">Monsieur</p>
+                            </button>
+                            <button type="button" onClick={() => setSex('femme')} value={sex} className={`flex flex-row justify-start items-center w-full gap-1 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${sex === 'femme' ? (style):null}`}>
+                                <p className="text-black font-semibold text-md w-full text-center">Madame</p>
+                            </button>
+                        </div>
+                        
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="prenom" className="font-medium">Prénom</label>
+                            <input type="text" id="prenom" value={prenom} onChange={(e) => setPrenom(e.target.value)} className="border-2 p-2 outline-green-300" required/>
+                        </div>
+
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="nom" className="font-medium">Nom</label>
+                            <input type="text" id="nom" value={nom} onChange={(e) => setNom(e.target.value)} className="border-2 p-2 outline-green-300" required/>
+                        </div>
+
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="email" className="font-medium ">Email</label>
+                            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-2 p-2 outline-green-300 focus:border-green-300 invalid:border-red-500 focus:invalid:border-red-500 peer" required/>
+                            <p className="text-red-500 text-sm invisible peer-invalid:visible">Invalid email address</p>
+                        </div>
+
+                        <div className="flex flex-col pt-5">
+                            <label htmlFor="number" className="font-medium">Téléphone</label>
+                            <input type="tel" id="tel" value={tel} onChange={(e) => setTel(e.target.value)} className="border-2 p-2 outline-green-300" required/>
+                            {tel < 0  ? (<p className="text-red-500 text-sm">Veuillez saisir un numéro de téléphone valide</p>):null}
+                        </div>
+                    </div>
+
+
+                    {myVerificationV}
+                    {myValidationV}
+                    {emailValid && (<p className="text-red-500 text-center">L'email existe déja dans la base de données</p>)}
+                    <div className="w-[80%] md:w-[50%] lg:w-[40%] mx-auto">
+                        <button type="button" onClick={submitTwo} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Valider</button>
+                    </div>
+
+                
+                </div>
+            )
+        }
+    }
+
+
+    /*const submitTwoT = (e) => {
+        if(sex !== "" && prenom !== "" && nom !== "" && email !== "" && tel !== ""){
+            setValueV('oui');
+            e.preventDefault()
+            const reponsesCacul = { choix, logement, date, surface, modeChauffage, toitureIsole, solIsole, murIsole, typeTravaux, niveauProjet, quandCommencer, personne, revenu, adresseLogement, email, sex, prenom, nom, tel };
+            axios.post('http://localhost:3001/envoyer-donnees-calcul&aide', reponsesCacul)
+            .then((reponsesCacul) => {
+                console.log(reponsesCacul.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+            props.close();
+        } else{
+            return setValueV('non');
+        }
+       
+    };*/
+
+    const submitTwo = async(e) => {
+        if(sex !== "" && prenom !== "" && nom !== "" && email !== "" && tel !== ""){
+            setValueV('oui');
+            e.preventDefault()
+            const login = { email };
+            axios.post('http://localhost:3001/emailModal', login)
+            .then(res => {
+                if(res.data.Login) {
+                    //console.log(res.data.Login)
+                    setEmailValid(true);
+                } else {
+                    const reponsesCacul = { choix, logement, date, surface, modeChauffage, toitureIsole, solIsole, murIsole, typeTravaux, niveauProjet, quandCommencer, personne, revenu, adresseLogement, email, sex, prenom, nom, tel };
+                    axios.post('http://localhost:3001/envoyer-donnees-calcul&aide', reponsesCacul)
+                    .then((reponsesCacul) => {
+                        console.log(reponsesCacul.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                    props.close();
+                }
+                    //console.log(res); 
+            })
+            .catch(err => console.log(err)); 
+        } else{
+            return setValueV('non');
+        }
+          
     }
 
 
@@ -253,7 +372,8 @@ function Modal(props) {
                     <button onClick={props.close} className="text-sm bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-1 xl:p-2 text-white rounded-md">Fermer</button>
                 </div>
 
-                <form className={`p-2 xl:p-6 ${value === 'oui' ? (block):null}`}>
+                <form>
+                <div className={`p-2 xl:p-6 ${value === 'oui' ? (block):null}`}>
                 <p className="font-medium text-md pt-5 pb-3">Vous êtes ?</p>
                 <div className=" flex flex-row gap-2 md:gap-10">
                     <button type="button" onClick={() => setChoix('proprietaire')} value={choix}   className={`flex flex-row justify-start items-center w-full py-2 pl-2 md:pl-5 gap-3 md:gap-5 rounded-lg border-2 shadow-sm hover:bg-slate-100 bg-gr ${choix === 'proprietaire' ? (style):null}`}>
@@ -389,9 +509,11 @@ function Modal(props) {
                 <div className="w-[60%] md:w-[30%] mx-auto">
                     <button type="button" onClick={handleCheck} className="w-full text-lg bg-gradient-to-r from-Three from-20% via-Two via-30% to-Four to-90% p-2 text-white rounded-md">Valider</button>
                 </div>
+                </div>
+                <p className={`${valueOne === 'oui' ? (block):null}`}>{handlePageOne()}</p>
+                <p className={`${valueTwo === 'oui' ? (block):null}`}>{handlePageTwo()}</p>
+                {handlePageInformationV()}
                 </form>
-                {handlePageOne()}
-                {handlePageTwo()}
             </div>
         </div>,
         document.getElementById('second-root')
