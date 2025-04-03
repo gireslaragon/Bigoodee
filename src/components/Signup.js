@@ -39,7 +39,7 @@ function Signup() {
             return setValueOne('non');
         }
     }
-    const myVerificationOne = valueOne === 'non' ? (<p className="text-red-500 text-center text-sm">Veuillez remplir tout les champs</p>):null;
+    const myVerificationOne = valueOne === 'non' && (<p className="text-red-500 text-center text-sm">Veuillez remplir tout les champs</p>);
 
    
 
