@@ -13,6 +13,7 @@ import signe from '../images/signe.png';
 import calendrier from '../images/calendar.png';
 import appartement from '../images/appartement.png';
 import axios from "axios";
+
 //import maison from '../images/maison.png';
 
 function Modal(props) {
@@ -331,20 +332,20 @@ function Modal(props) {
         }
        
     };*/
-
+    
     const submitTwo = async(e) => {
         if(sex !== "" && prenom !== "" && nom !== "" && email !== "" && tel !== ""){
             setValueV('oui');
             e.preventDefault()
             const login = { email };
-            axios.post('http://localhost:3001/emailModal', login)
+            axios.post(`${process.env.REACT_APP_API_URL}/verif-email-Modal/emailModal`, login) 
             .then(res => {
                 if(res.data.Login) {
                     //console.log(res.data.Login)
                     setEmailValid(true);
                 } else {
                     const reponsesCacul = { choix, logement, date, surface, modeChauffage, toitureIsole, solIsole, murIsole, typeTravaux, niveauProjet, quandCommencer, personne, revenu, adresseLogement, email, sex, prenom, nom, tel };
-                    axios.post('http://localhost:3001/envoyer-donnees-calcul&aide', reponsesCacul)
+                    axios.post(`${process.env.REACT_APP_API_URL}/donnees-calcul/envoyer-donnees-calcul&aide `, reponsesCacul) 
                     .then((reponsesCacul) => {
                         console.log(reponsesCacul.data);
                     })

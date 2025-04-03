@@ -31,7 +31,7 @@ function Dashboard() {
 
     //.then(data => console.log(data)) ONE
     useEffect(()=> {
-        fetch('http://localhost:3001/reponseBilan')
+        fetch(`${process.env.REACT_APP_API_URL}/la-reponse-bilan/reponseBilan`)
         .then(res => res.json())
         .then(data => setData(data))
         .catch(err => console.log(err));
@@ -42,7 +42,7 @@ function Dashboard() {
         if (identifiantOne !== '') {
             //console.log(identifiantOne);
             const idOne = {identifiantOne}
-          axios.post('http://localhost:3001/detailsPersonne', idOne)
+          axios.post(`${process.env.REACT_APP_API_URL}/user-responses/detailsPersonne`, idOne)
             .then(res => {
               setDetailsOne(res.data);
             })
@@ -56,7 +56,7 @@ function Dashboard() {
 
     //.then(data => console.log(data)) TWO
     useEffect(()=> {
-        fetch('http://localhost:3001/calculAide')
+        fetch(`${process.env.REACT_APP_API_URL}/le-calcul-aide/calculAide`)
         .then(res => res.json())
         .then(data => setDatas(data))
         .catch(err => console.log(err));
@@ -68,7 +68,7 @@ function Dashboard() {
         if (identifiantTwo !== '') {
             //console.log(identifiantTwo);
             const idtWO = {identifiantTwo}
-          axios.post('http://localhost:3001/detailsAide', idtWO)
+          axios.post(`${process.env.REACT_APP_API_URL}/user-responsesTwo/detailsAide`, idtWO)
             .then(res => {
               setDetailsTwo(res.data);
             })
@@ -85,7 +85,7 @@ function Dashboard() {
     const navigate = useNavigate();
 
     useEffect( () => {
-        axios.get('http://localhost:3001/dashboard')
+        axios.get(`${process.env.REACT_APP_API_URL}/le-dashboard/dashboard`)
         .then(res => {
             if(res.data.valid) {
                 setName(res.data.username);
@@ -247,7 +247,7 @@ function Dashboard() {
                         <td className="w-[50%] text-start">{detailsTwo.date}</td>
                     </div>
                     {detailsTwo.niveauProjet !== 'Je réfléchis à mes travaux' ? (
-                        <div className="flex flex-row justify-between items-center py-2 px-10 bg-Verte bg-opacity-30">
+                        <div className="flex flex-row justify-between items-center py-2 px-10 bg-Verte bg-opacity-30 rounded-b-xl">
                             <th className="w-[50%] text-start">Où se situe le logement concerné par votre projet ?</th>
                             <td className="w-[50%] text-start">{detailsTwo.adresseLogement}</td>
                         </div>

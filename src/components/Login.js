@@ -32,7 +32,7 @@ function Login() {
     axios.defaults.withCredentials = true;
 
     useEffect( () => {
-        axios.get('http://localhost:3001/dashboard')
+        axios.get(`${process.env.REACT_APP_API_URL}/le-dashboard/dashboard`)
         .then(res => {
             if(res.data.valid) {
                 navigate('/dashboard')
@@ -46,7 +46,7 @@ function Login() {
     const handleCheck = async(e) => {
         e.preventDefault()
         const login = { email, password };
-        axios.post('http://localhost:3001/login', login)
+        axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, login)
         .then(res => {
                 if(res.data.Login) {
                     navigate("/dashboard");

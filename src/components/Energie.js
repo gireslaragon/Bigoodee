@@ -215,14 +215,14 @@ function Energie(props) {
             setValueOne('oui');
             e.preventDefault()
             const login = { email };
-            axios.post('http://localhost:3001/email', login)
+            axios.post(`${process.env.REACT_APP_API_URL}/verif-email/email`, login)
             .then(res => {
                 if(res.data.Login) {
                     //console.log(res.data.Login)
                     setEmailExist(true);
                 } else {
                     const mesReponses = { choix, estimationConcerne, codePostal, anneeConstruction, formeMaison, mitoyenne, nombreEtage, surfaceHabitable, toitureIsole, murIsole, solIsole, typeVitrage, modeChauffage, typeGaz, typePompe, typeFioul, chauffageSecondaire, typeChauffageSecondaire, typeChauffeEau, systemeClimatisation, systemeVentilation, sex, prenom, nom, email, tel };
-                    axios.post('http://localhost:3001/envoyer-donnees-bilan&energie', mesReponses)
+                    axios.post(`${process.env.REACT_APP_API_URL}/donnees-aide/envoyer-donnees-bilan&energie`, mesReponses)
                     .then((mesReponses) => {
                         console.log(mesReponses.data);
                     })

@@ -68,7 +68,7 @@ function Signup() {
       const handleSubmit = async(e) => {
         e.preventDefault()
         const personnel = { user, email, password };
-        axios.post('http://localhost:3001/signup', personnel)
+        axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, personnel)
         .then(res => 
             {
                 console.log(res);
