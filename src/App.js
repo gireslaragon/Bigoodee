@@ -18,7 +18,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom';
 //import { HashLink } from 'react-router-hash-link';
 //import Logo from "./images/LogoCouleur.png";
 import Dashboard from "./components/Dashboard";
-//import Signup from "./components/Signup";
+import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Notfound from "./components/Notfound";
 
@@ -42,7 +42,7 @@ function App() {
           <Routes>
               <Route index path="/" element={<Menu />} />
               <Route strict path='/apropos'  element={<Apropos />}/>
-              {/*<Route strict path='/signup'  element={<Signup />}/>*/}
+              <Route strict path='/signup'  element={<Signup />}/>
               <Route strict path='/login'  element={<Login />}/>
               <Route strict path='/dashboard'  element={<Dashboard />}/>
               <Route path='*'  element={<Notfound />}/>
