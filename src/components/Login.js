@@ -29,28 +29,58 @@ function Login() {
         }
     }*/
 
-    axios.defaults.withCredentials = true;
+    
 
-    useEffect( () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/le-dashboard/dashboard`)
+    
+
+    /*useEffect( () => {
+        axios.get(`${process.env.REACT_APP_API_URL}/auth/dashboard`,)
         .then(res => {
             if(res.data.valid) {
+                console.log(res.data.valid)
                 navigate('/dashboard')
             } else {
+                console.log(res.data.valid)
                 navigate('/login');
             }
         })
         .catch(err => console.log(err))
+    }, [navigate])*/
+
+
+    useEffect( () => {
+        const token = localStorage.getItem('token');
+        //console.log("voila le token " + token)
+        axios.get(`${process.env.REACT_APP_API_URL}/le-dashboard/dashboard`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((res) => {
+            if (res.data.valid) {
+              //console.log(res.data.valid);
+              navigate('/dashboard');
+            } else {
+                //console.log(res.data.valid)
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            // Affichez un message d'erreur à l'utilisateur
+          });
     }, [navigate])
+
 
     const handleCheck = async(e) => {
         e.preventDefault()
         const login = { email, password };
         axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, login)
         .then(res => {
-                if(res.data.Login) {
-                    navigate("/dashboard");
-                    console.log("C'est bon !");
+                if(res.data.token) {
+                    console.log(res.data.token)
+                    const token = res.data.token;
+                    localStorage.setItem('token', token);
+                    navigate('/dashboard')
                 } else {
                     setErreur(true)
                 }

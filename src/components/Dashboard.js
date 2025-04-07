@@ -8,7 +8,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 function Dashboard() {
     const [data, setData] = useState([]);
     const [datas, setDatas] = useState([]);
-    const [name, setName] = useState('');
+    
     const [active, setActive] = useState('oui');
     //const [show, setShow] = useState('');
     //const [numero, setNumero] = useState('');
@@ -24,8 +24,9 @@ function Dashboard() {
     //const deblock = 'flex';
     const blocks = 'bg-Secondary shadow-xl';
    
-    axios.defaults.withCredentials = true;
+    
 
+    const navigate = useNavigate();
 
 
 
@@ -82,19 +83,32 @@ function Dashboard() {
 
 
     //pour les session
-    const navigate = useNavigate();
-
     useEffect( () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/le-dashboard/dashboard`)
-        .then(res => {
-            if(res.data.valid) {
-                setName(res.data.username);
-            } else {
-                navigate('/login');
-            }
+        const token = localStorage.getItem('token');
+        //console.log("voila le token " + token)
+        axios.get(`${process.env.REACT_APP_API_URL}/le-dashboard/dashboard`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         })
-        .catch(err => console.log(err))
+          .then((res) => {
+            if (res.data.valid) {
+              //console.log(res.data.valid);
+            } else {
+                //console.log(res.data.valid)
+              navigate('/login');
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            // Affichez un message d'erreur à l'utilisateur
+          });
     }, [navigate])
+
+   
+
+    
+    
 
     
 
@@ -108,7 +122,7 @@ function Dashboard() {
                     <button className={`hover:text-Two border-2 border-Secondary w-full p-2 rounded-md text-white text-lg ${active === 'oui' ? (blocks):null}`} onClick={() => {setActive('oui'); setIdentifiantOne('')}}>Réponses Bilan énergétique</button>
                     <button className={`hover:text-Two border-2 border-Secondary w-full p-2 rounded-md text-white text-lg ${active === 'non' ? (blocks):null}`} onClick={() => {setActive('non'); setIdentifiantTwo('')}}>Réponses calcul aides</button>
                 </div>
-                <p className="text-transparent">{name}</p>
+                
             </div>
 
             {/* ONE */}
